@@ -28,7 +28,12 @@ const banner = ['/*!\n',
 function browserSync(done) {
   browsersync.init({
     server: {
-      baseDir: "./"
+      baseDir: "./src",
+      routes: {
+        "/vendor": "vendor",
+        "/css": "css",
+        "/img": "img"
+      }
     },
     port: 3000
   });
@@ -102,7 +107,7 @@ function css() {
 // Watch files
 function watchFiles() {
   gulp.watch("./scss/**/*", css);
-  gulp.watch("./**/*.html", browserSyncReload);
+  gulp.watch("./src/**/*.html", browserSyncReload);
 }
 
 // Define complex tasks
